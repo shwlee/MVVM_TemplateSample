@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D6DDE65F-CBC9-49D6-8E5C-B7E57597F1FF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Define</RootNamespace>
+    <AssemblyName>Define</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\WindowSettings.cs" />
+    <Compile Include="Enums\Windows.cs" />
+    <Compile Include="EventAggregators\BackgroundEventSubscription.cs" />
+    <Compile Include="EventAggregators\BackgroundEventSubscription`1.cs" />
+    <Compile Include="EventAggregators\DataEventArgs.cs" />
+    <Compile Include="EventAggregators\DelegateReference.cs" />
+    <Compile Include="EventAggregators\DispatcherEventSubscription.cs" />
+    <Compile Include="EventAggregators\DispatcherEventSubscription`1.cs" />
+    <Compile Include="EventAggregators\EventAggregator.cs" />
+    <Compile Include="EventAggregators\EventBase.cs" />
+    <Compile Include="EventAggregators\EventSubscription.cs" />
+    <Compile Include="EventAggregators\EventSubscription`1.cs" />
+    <Compile Include="EventAggregators\IDelegateReference.cs" />
+    <Compile Include="EventAggregators\IEventAggregator.cs" />
+    <Compile Include="EventAggregators\IEventSubscription.cs" />
+    <Compile Include="EventAggregators\PubSubEvent.cs" />
+    <Compile Include="EventAggregators\PubSubEvent`1.cs" />
+    <Compile Include="EventAggregators\SubscriptionToken.cs" />
+    <Compile Include="EventAggregators\ThreadOption.cs" />
+    <Compile Include="Interfaces\CommandManager\ICommandManager.cs" />
+    <Compile Include="Interfaces\Dispatcher\IDispatcherService.cs" />
+    <Compile Include="Interfaces\ServiceLocator\IComponentContainer.cs" />
+    <Compile Include="Interfaces\WindowServices\IWindowContent.cs" />
+    <Compile Include="Interfaces\WindowServices\IWindowContext.cs" />
+    <Compile Include="Interfaces\WindowServices\IWindowService.cs" />
+    <Compile Include="Interfaces\WindowServices\IWindowSettings.cs" />
+    <Compile Include="Interfaces\WindowServices\IWindowView.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

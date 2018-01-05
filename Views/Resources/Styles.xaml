@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Style x:Key="ButtonMinimize" TargetType="{x:Type Button}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border x:Name="border" SnapsToDevicePixels="true" Margin="0" Background="{DynamicResource Button_Normal_Background}" CornerRadius="0" BorderThickness="0">
+						<Path x:Name="icon" Data="F1M8,0L0,0 0,1 8,1z" Fill="{DynamicResource Button_Normal_Foreground}" Height="1" Width="11" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="Background" TargetName="border" Value="{DynamicResource Button_MouseOver_Background}"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="true">
+							<Setter Property="Background" TargetName="border" Value="{DynamicResource Button_Pressed_Background}"/>
+							<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Button_Pressed_Border}"/>
+							<Setter Property="Fill" TargetName="icon" Value="{DynamicResource Button_Pressed_Foreground}"/>
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="border" Value="0.45"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="ToggleWindowState" TargetType="{x:Type ToggleButton}">
+		<Setter Property="Focusable" Value="False"/>
+		<Setter Property="Width" Value="16"/>
+		<Setter Property="Height" Value="16"/>
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ToggleButton}">
+					<Border x:Name="border" SnapsToDevicePixels="true" Margin="0" BorderBrush="{DynamicResource Button_Normal_Border}" Background="{DynamicResource Button_Normal_Background}" CornerRadius="0" BorderThickness="0">
+						<Grid>
+							<Rectangle x:Name="Large" HorizontalAlignment="Center" Height="10" StrokeThickness="1" VerticalAlignment="Center" Width="10" Stroke="{DynamicResource Toggle_Normal_Foreground}" Visibility="Collapsed"/>
+							<Path x:Name="Small" Data="F1M9,6.143L7.143,6.143 7.143,2.857 3.857,2.857 3.857,1 9,1z M6.143,9L1,9 1,3.857 6.143,3.857z M2.857,0L2.857,2.857 0,2.857 0,10 7.143,10 7.143,7.143 10,7.143 10,0z" HorizontalAlignment="Center" Height="10" Margin="0" Stretch="Fill" Fill="{DynamicResource Toggle_Normal_Foreground}" StrokeThickness="1" Visibility="Visible" VerticalAlignment="Center" Width="10"/>
+						</Grid>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="Background" TargetName="border" Value="{DynamicResource Button_MouseOver_Background}"/>
+						</Trigger>
+						<Trigger Property="IsChecked" Value="True">
+							<Setter Property="Visibility" TargetName="Large" Value="Visible"/>
+							<Setter Property="Visibility" TargetName="Small" Value="Collapsed"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="ButtonExit" TargetType="{x:Type Button}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type Button}">
+					<Border x:Name="border" SnapsToDevicePixels="true" Margin="0" BorderBrush="{DynamicResource Button_Normal_Border}" Background="{DynamicResource Button_Normal_Background}" CornerRadius="0" BorderThickness="0">
+						<Path x:Name="icon" Data="F1M7.071,0L3.889,3.182 0.707,0 0,0.707 3.182,3.889 0,7.071 0.707,7.778 3.889,4.596 7.071,7.778 7.778,7.071 4.596,3.889 7.778,0.707z" Fill="{DynamicResource Button_Normal_Foreground}" Height="9" Width="9" Stretch="Fill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Border>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver" Value="true">
+							<Setter Property="Fill" TargetName="icon" Value="#ffffffff"/>
+							<Setter Property="Background" TargetName="border" Value="{DynamicResource Button_MouseOver_Background_Point}"/>
+						</Trigger>
+						<Trigger Property="IsPressed" Value="true">
+							<Setter Property="Background" TargetName="border" Value="{DynamicResource Button_Pressed_Background}"/>
+							<Setter Property="Fill" TargetName="icon" Value="{DynamicResource Button_Pressed_Foreground}"/>
+						</Trigger>
+						<Trigger Property="IsEnabled" Value="false">
+							<Setter Property="Opacity" TargetName="border" Value="0.45"/>
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

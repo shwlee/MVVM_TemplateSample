@@ -1,0 +1,92 @@
+﻿<windows:BaseWindow x:Class="Views.Windows.CommonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:windows="clr-namespace:Views.Windows"
+        xmlns:windowViewModels="clr-namespace:ViewModels.WindowViewModels;assembly=ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviors="clr-namespace:Views.Behaviors"
+        xmlns:converters="clr-namespace:UICommon.Converters;assembly=UICommon"
+        mc:Ignorable="d"
+		WindowStyle="None"
+		AllowsTransparency="False">
+
+	<!--ResizeMode="{Binding ContentContext.ResizeMode, Converter={converters:EnumToEnumConverter}}"
+		WindowState="{Binding ContentContext.State, Converter={converters:EnumToEnumConverter}}"
+		SizeToContent="{Binding ContentContext.SizeToContent, Converter={converters:EnumToEnumConverter}}"-->
+	<!--<windows:BaseWindow.SizeToContent>
+		<Binding	Path="Context.SizeToContent" Converter="{converters:EnumToEnumConverter}"/>
+	</windows:BaseWindow.SizeToContent>-->
+
+	<windows:BaseWindow.Resources>
+
+		<Style x:Key="WindowHeader" TargetType="{x:Type ContentControl}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate>
+						<Border>
+							<Grid x:Name="xHeaderPanel" Background="Transparent">
+								<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+									<Image Margin="10,0"></Image>
+									<TextBlock Text="{Binding Setting.BaseTitle}" HorizontalAlignment="Left" Margin="5,0" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="#FF76A3D0" FontSize="14" FontWeight="Bold" />
+								</StackPanel>
+
+								<StackPanel HorizontalAlignment="Right" Margin="0" Orientation="Horizontal" VerticalAlignment="Center">
+									<Button x:Name="xMinimizeButton" Style="{DynamicResource ButtonMinimize}" Command="{Binding MinimizeCommand}" Width="45" Height="33" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" IsTabStop="False"/>
+									<ToggleButton x:Name="xMaximizeButton" Style="{DynamicResource ToggleWindowState}" Command="{Binding NormalOrMaximizeCommand}" CommandParameter="{Binding Path=IsChecked, RelativeSource={RelativeSource Self}}"  Width="45" Height="33" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" IsTabStop="False"/>
+									<Button x:Name="xCloseButton" Style="{DynamicResource ButtonExit}" Command="{Binding CloseCommand}" Width="45" Height="33" HorizontalAlignment="Center" VerticalAlignment="Center" IsTabStop="False" Margin="0" />
+								</StackPanel>
+							</Grid>
+						</Border>
+						<ControlTemplate.Triggers>
+							<DataTrigger Binding="{Binding Setting.Style}" Value="Tool">
+								<Setter TargetName="xMaximizeButton" Property="FrameworkElement.Visibility" Value="Collapsed"/>
+								<Setter TargetName="xMinimizeButton" Property="FrameworkElement.Visibility" Value="Collapsed"/>
+							</DataTrigger>
+							<DataTrigger Binding="{Binding Path=WindowState, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Value="Normal">
+								<Setter TargetName="xMaximizeButton" Property="IsChecked" Value="True"/>
+							</DataTrigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</windows:BaseWindow.Resources>
+
+	<!-- CommonWindow는 CommonWindowViewModel 을 고정으로 사용한다. -->
+	<windows:BaseWindow.DataContext>
+		<windowViewModels:CommonWindowViewModel />
+	</windows:BaseWindow.DataContext>
+
+	<i:Interaction.Behaviors>
+		<behaviors:CommonWindowBehavior/>
+	</i:Interaction.Behaviors>
+
+	<WindowChrome.WindowChrome>
+		<WindowChrome ResizeBorderThickness="5" 
+                      CaptionHeight="0" 
+                      CornerRadius="0" 
+                      GlassFrameThickness="0" />
+	</WindowChrome.WindowChrome>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="35" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<Border Background="#FF424242" BorderBrush="#FF282828" BorderThickness="0,0,0,1"/>
+
+		<ContentControl Grid.Row="0" x:Name="xHeaderPanel" Style="{StaticResource WindowHeader}"/>
+		<ContentControl Grid.Row="1" Content="{Binding ContentContext}"/>
+
+	</Grid>
+</windows:BaseWindow>
+
+
+
+
+
+
+
