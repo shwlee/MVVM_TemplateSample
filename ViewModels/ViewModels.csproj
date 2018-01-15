@@ -49,6 +49,7 @@
     <Compile Include="Contents\MainViewModel.cs" />
     <Compile Include="Contents\ContentViewModel.cs" />
     <Compile Include="Contents\NextViewModel.cs" />
+    <Compile Include="Locator\ViewModelLocator.cs" />
     <Compile Include="Observable\ObservableObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\ViewModelBase.cs" />

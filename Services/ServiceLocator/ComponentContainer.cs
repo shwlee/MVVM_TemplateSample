@@ -32,6 +32,11 @@ namespace Services.ServiceLocator
 			return this._lazyUnityContianer.Value.Resolve<T>();
 		}
 
+		public bool IsRegistered<T>()
+		{
+			return this._lazyUnityContianer.Value.IsRegistered<T>();
+		}
+
 		public void Unregister<T>()
 		{
 			// 등록된 인스턴스만 제거한다. key와 value 의 타입은 유지.

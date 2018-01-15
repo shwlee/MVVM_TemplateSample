@@ -5,6 +5,7 @@ using Entry.Bootstrap;
 using System.Windows;
 using Define.Classes;
 using ViewModels.Contents;
+using ViewModels.Locator;
 using Views.Windows;
 
 namespace Entry
@@ -28,7 +29,7 @@ namespace Entry
 			var container = ContainerResolver.GetContainer();
 			var windowManager = container.Resolve<IWindowService>();
 
-			var mainViewModel = new MainViewModel();
+			var mainViewModel = ViewModelLocator.GetViewModel<MainViewModel>();
 			var setting = new WindowSettings(
 				"Test Main", 
 				WindowStyles.ToolWindow, 
