@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel;
+using System.Diagnostics.Contracts;
 using System.Windows.Input;
 using Common.ServiceLocators;
 using Common.Utils.RelayCommands;
@@ -11,10 +12,7 @@ namespace ViewModels.Contents
 	{
 		private RelayCommand _goNextCommand;
 
-		public ICommand GoNextCommand
-		{
-			get { return this._goNextCommand ?? (this._goNextCommand = new RelayCommand(this.GoNext)); }
-		}
+		public ICommand GoNextCommand => this._goNextCommand ?? (this._goNextCommand = new RelayCommand(this.GoNext));
 
 		private void GoNext(object obj)
 		{

@@ -10,6 +10,8 @@ namespace Define.Interfaces.ServiceLocator
 
 		T Resolve<T>();
 
+		void Unregister<T>();
+
 		void Release();
 	}
 }
