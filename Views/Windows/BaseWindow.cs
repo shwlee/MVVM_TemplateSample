@@ -3,12 +3,19 @@ using Define.Enums;
 using Define.Interfaces.WindowServices;
 using System;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace Views.Windows
 {
 	public abstract class BaseWindow : Window, IWindowView
 	{
 		private SizeToContent _beforeMaximizedSizeToContent;
+
+		private WindowChrome _chrome;
+
+		public IWindowSettings Settings { get; private set; }
+
+		public bool IsClosed { get; set; }
 
 		protected override void OnClosed(EventArgs e)
 		{
@@ -30,9 +37,21 @@ namespace Views.Windows
 
 		public void Initialize(IWindowSettings settings)
 		{
+			this.Settings = settings;
+
 			this.ResizeMode = settings.ResizeMode.GetEnum<ResizeMode>();
 			this.SizeToContent = settings.SizeToContent.GetEnum<SizeToContent>();
 			this.WindowState = settings.State.GetEnum<WindowState>();
+
+			this._chrome = new WindowChrome
+			{
+				CaptionHeight = 0,
+				CornerRadius = new CornerRadius(),
+				GlassFrameThickness = new Thickness(),
+				ResizeBorderThickness = new Thickness(5)
+			};
+
+			WindowChrome.SetWindowChrome(this, this._chrome);
 		}
 
 		public void MoveWindow()
@@ -63,6 +82,9 @@ namespace Views.Windows
 			this.SizeToContent = sizeToContent.GetEnum<SizeToContent>();
 		}
 
-		public bool IsClosed { get; set; }
+		internal void ControlWindowChrome(bool isApplyShell)
+		{
+			WindowChrome.SetWindowChrome(this, isApplyShell ? this._chrome : null);
+		}
 	}
 }

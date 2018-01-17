@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+using System.Windows.Shell;
 using System.Windows.Threading;
 using Common.Utils.Extensions;
 using UICommon.Utils;
@@ -16,7 +17,6 @@ namespace Views.Behaviors
 		#region Fields
 
 		private bool _restoreWindowState;
-		private SizeToContent _previousSizeToContent;
 
 		#endregion
 
@@ -58,14 +58,8 @@ namespace Views.Behaviors
 			{
 				return;
 			}
-
-			//var previousSizeToContent = this.AssociatedObject.SizeToContent;
+			
 			this.AssociatedObject.SizeToContent = SizeToContent.Manual;
-
-			//this.AssociatedObject.Dispatcher.BeginInvoke(DispatcherPriority.Send, (Action)(() =>
-			//{
-			//	this.AssociatedObject.SizeToContent = previousSizeToContent;
-			//}));
 		}
 
 		private void AssociatedObjectOnStateChanged(object sender, EventArgs e)
@@ -76,10 +70,12 @@ namespace Views.Behaviors
 				case WindowState.Maximized:
 					this.AssociatedObject.xHeaderPanel.MouseMove += this.HeaderPanelOnMouseMove;
 					this._restoreWindowState = true;
+					this.AssociatedObject.ControlWindowChrome(false);
 					break;
 				case WindowState.Normal:
 				case WindowState.Minimized:
 					this.AssociatedObject.xHeaderPanel.MouseMove -= this.HeaderPanelOnMouseMove;
+					this.AssociatedObject.ControlWindowChrome(true);
 					break;
 			}
 		}

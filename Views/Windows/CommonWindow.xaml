@@ -63,23 +63,26 @@
 		<behaviors:CommonWindowBehavior/>
 	</i:Interaction.Behaviors>
 
-	<WindowChrome.WindowChrome>
+	<!--<WindowChrome.WindowChrome>
 		<WindowChrome ResizeBorderThickness="5" 
                       CaptionHeight="0" 
                       CornerRadius="0" 
                       GlassFrameThickness="0" />
-	</WindowChrome.WindowChrome>
+	</WindowChrome.WindowChrome>-->
 
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="35" />
 			<RowDefinition />
+			<RowDefinition Height="35" />
 		</Grid.RowDefinitions>
 
 		<Border Background="#FF424242" BorderBrush="#FF282828" BorderThickness="0,0,0,1"/>
 
 		<ContentControl Grid.Row="0" x:Name="xHeaderPanel" Style="{StaticResource WindowHeader}"/>
 		<ContentControl Grid.Row="1" Content="{Binding ContentContext}"/>
+
+		<Rectangle Grid.Row="2"  Fill="Red" />
 
 	</Grid>
 </windows:BaseWindow>
