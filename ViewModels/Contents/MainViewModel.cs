@@ -1,7 +1,9 @@
-﻿using Common.ServiceLocators;
+﻿using System.Diagnostics.Contracts;
+using Common.ServiceLocators;
 using Common.Utils.RelayCommands;
 using Define.Interfaces.WindowServices;
 using System.Windows.Input;
+using Define.Interfaces.CreateInstances;
 using ViewModels.Locator;
 
 namespace ViewModels.Contents
@@ -14,9 +16,13 @@ namespace ViewModels.Contents
 
 		private void GoNext(object obj)
 		{
-			var next = ViewModelLocator.GetViewModel<NextViewModel>();
 			var container = ContainerResolver.GetContainer();
+			var instanceCreator = container.Resolve<IInstanceCreate>();
+			var viewModel = instanceCreator.Create<NextViewModel>();
+
+			return;
 			var windowService = container.Resolve<IWindowService>();
+			var next = ViewModelLocator.GetViewModel<NextViewModel>();
 			windowService.ChangeContent(this, next);
 		}
 	}

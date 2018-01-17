@@ -60,6 +60,7 @@
     <Compile Include="EventAggregators\SubscriptionToken.cs" />
     <Compile Include="EventAggregators\ThreadOption.cs" />
     <Compile Include="Interfaces\CommandManager\ICommandManager.cs" />
+    <Compile Include="Interfaces\CreateInstances\IInstanceCreate.cs" />
     <Compile Include="Interfaces\Dispatcher\IDispatcherService.cs" />
     <Compile Include="Interfaces\ServiceLocator\IComponentContainer.cs" />
     <Compile Include="Interfaces\WindowServices\IWindowContent.cs" />
