@@ -18,12 +18,38 @@ namespace ViewModels.Contents
 		{
 			var container = ContainerResolver.GetContainer();
 			var instanceCreator = container.Resolve<IInstanceCreate>();
-			var viewModel = instanceCreator.Create<NextViewModel>();
+			//var viewModel = instanceCreator.Create(typeof(Test));
+			//var viewModel = instanceCreator.Create<Test>();
+			//var viewModel = instanceCreator.Create(typeof(NextViewModel), null);
+			var viewModel = instanceCreator.Create(typeof(Test), 10, "aa", 5d);
 
 			return;
 			var windowService = container.Resolve<IWindowService>();
 			var next = ViewModelLocator.GetViewModel<NextViewModel>();
 			windowService.ChangeContent(this, next);
+		}
+	}
+
+	public class Test
+	{
+		private int _age;
+
+		private string _name;
+
+		private double _point;
+
+		public NextViewModel Next { get; set; }
+
+		public Test()
+		{
+			
+		}
+
+		public Test(int age, string name, double point)
+		{
+			this._age = age;
+			this._name = name;
+			this._point = point;
 		}
 	}
 }

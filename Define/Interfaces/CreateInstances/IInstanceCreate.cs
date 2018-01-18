@@ -4,8 +4,8 @@ namespace Define.Interfaces.CreateInstances
 {
 	public interface IInstanceCreate
 	{
-		object Create(Type type);
+		object Create(Type type, params object[] args);
 
-		T Create<T>() where T : class;
+		T Create<T>(params object[] args) where T : class;
 	}
 }
