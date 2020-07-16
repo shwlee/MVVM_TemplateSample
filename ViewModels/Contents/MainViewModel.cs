@@ -17,13 +17,13 @@ namespace ViewModels.Contents
 		private void GoNext(object obj)
 		{
 			var container = ContainerResolver.GetContainer();
-			var instanceCreator = container.Resolve<IInstanceCreate>();
-			//var viewModel = instanceCreator.Create(typeof(Test));
-			//var viewModel = instanceCreator.Create<Test>();
-			//var viewModel = instanceCreator.Create(typeof(NextViewModel), null);
-			var viewModel = instanceCreator.Create(typeof(Test), 10, "aa", 5d);
+			//var instanceCreator = container.Resolve<IInstanceCreate>();
+			////var viewModel = instanceCreator.Create(typeof(Test));
+			////var viewModel = instanceCreator.Create<Test>();
+			////var viewModel = instanceCreator.Create(typeof(NextViewModel), null);
+			//var viewModel = instanceCreator.Create(typeof(Test), 10, "aa", 5d);
 
-			return;
+			//return;
 			var windowService = container.Resolve<IWindowService>();
 			var next = ViewModelLocator.GetViewModel<NextViewModel>();
 			windowService.ChangeContent(this, next);

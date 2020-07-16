@@ -76,6 +76,11 @@ namespace Services.Window
 
 			var window = this._windowCaches[from];
 			window.Context.ContentContext = to;
+
+			if (this._windowCaches.ContainsKey(to) == false)
+			{
+				this._windowCaches.Add(to, window);
+			}
 		}
 
 		public void ChangeWindowState(IWindowContent windowViewModel, WindowViewStates states)

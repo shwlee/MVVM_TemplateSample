@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Gray">
-		<TextBlock FontSize="500" Text="Next" Foreground="AliceBlue" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <StackPanel>
+            <Button Width="50" Height="20" Content="GoMain" Command="{Binding GoMainCommand}" />
+            <TextBlock FontSize="500" Text="Next" Foreground="AliceBlue" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
+            
     </Grid>
 </UserControl>
